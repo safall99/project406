@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Concerts</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Available Concerts</h1>
+    <table>
+        <tr>
+            <th>Artist</th>
+            <th>Venue</th>
+            <th>Tickets</th>
+            <th>Action</th>
+        </tr>
+        {% for concert in concerts %}
+            <tr>
+                <td>{{ concert.artist }}</td>
+                <td>{{ concert.venue }}</td>
+                <td>{{ concert.tickets }}</td>
+                <td>
+                    <a href="{{ url_for('confirm', concert_id=concert.id) }}">
+                        <button>Book Tickets</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmation</title>
+    <style>
+        h1 {
+            color: #4CAF50;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ concert.artist }} - {{ concert.venue }}</h1>
+    <p>Tickets available: {{ concert.tickets }}</p>
+    <form method="POST" action="{{ url_for('confirm', concert_id=concert.id) }}">
+        <label for="tickets">Tickets:</label>
+        <input type="number" id="tickets" name="tickets" min="1" max="{{ concert.tickets }}" required>
+        <br>
+        <input type="submit" value="Book Tickets">
+    </form>
+</body>
+</html>
+
